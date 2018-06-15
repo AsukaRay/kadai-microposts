@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Controller;
 
 class MicropostsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    
+     public function index()
     {
         $data = [];
         if (\Auth::check()) {
@@ -24,12 +21,10 @@ class MicropostsController extends Controller
                 'user' => $user,
                 'microposts' => $microposts,
             ];
-            $data += $this->counts($user);
-            return view('users.show', $data);
-        }else {
-            return view('welcome',$data);
         }
+        return view('welcome', $data);
     }
+    
     
       public function store(Request $request)
     {
