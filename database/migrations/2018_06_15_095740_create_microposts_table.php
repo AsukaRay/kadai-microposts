@@ -18,12 +18,18 @@ class CreateMicropostsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('content');
             $table->timestamps();
-
+            
             // Foreign key constraint
             $table->foreign('user_id')->references('id')->on('users');
+            
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('microposts');
